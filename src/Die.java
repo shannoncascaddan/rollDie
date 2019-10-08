@@ -10,12 +10,12 @@ public class Die
     public Die()
     {
         sides = 6;
-        roll = generator.nextInt(sides) + 1;
+        roll = checkSides();
     }//end default constructor
     public Die(int inputSides)
     {
         sides = inputSides;
-        roll = generator.nextInt(sides) + 1;
+        roll = checkSides();
     }//end single arg constructor
 
     //getters
@@ -38,6 +38,15 @@ public class Die
         roll = newRoll;
     }//end setRoll
 
+    //brain methods
+    private int checkSides()
+    {
+        if (sides>0)
+        {
+            return generator.nextInt(sides) + 1;
+        }
+        return generator.nextInt(6) + 1;
+    }//check if num sides is valid
     //toString
     public String toString()
     {
